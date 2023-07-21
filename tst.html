@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function myfunction(){
+           var catk = parseInt(document.getElementById('catk').value);
+           var watk = parseInt(document.getElementById('watk').value);
+           var pct = parseFloat(document.getElementById('atkpct').value);
+           var drt = parseInt(document.getElementById('atkdrt').value);
+           var addit = parseFloat(document.getElementById('addit').value);
+           var crt = parseFloat(document.getElementById('crt').value);
+           var crtd = parseFloat(document.getElementById('crtd').value);
+           var toug = parseInt(document.getElementById('toug').value);
+           var ease = parseInt(document.getElementById('ease').value);
+           var eledef = parseInt(document.getElementById('eledef').value);
+           var elepen = parseInt(document.getElementById('elepen').value);
+           var mlvl = parseInt(document.getElementById('mlvl').value);
+           var olvl = parseInt(document.getElementById('olvl').value);
+           var ddef = parseInt(document.getElementById('ddef').value);
+           var beil = parseInt(document.getElementById('beil').value);
+           amplitude = catk + watk
+           totatk = ((catk+watk) * pct / 100) + drt
+           atkad = totatk / amplitude + 1
+           additn = addit + 1
+           console.log(additn)
+           crtad = 1 + crt * crtd / 10000
+           console.log(crtad)
+           tough = 1 - toug / 10
+           console.log(tough)
+           easi = 1 + ease / 10
+           console.log(easi)
+           eleatk = 1 - eledef *0.2 + elepen * 0.2
+           console.log(eleatk)
+           lvl = (olvl*10+200)/(mlvl*10+200)
+           def = 1 + lvl * (1 - ddef)
+           console.log(def)
+           ampl = amplitude * beil
+           console.log(ampl)
+           dmg = ampl*atkad*additn*crtad*tough*easi*eleatk/def;
+           dmg = parseFloat(dmg).toFixed(2);
+           document.getElementById('totatk').innerHTML = dmg
+        }
+        </script>
+</head>
+<body>
+    <style>
+        .fst{
+            text-align: center;
+        }
+    </style>
+    <h1 class = 'fst'>数值计算器</h1>
+    <div class = 'fst'>角色白值：<input id = 'catk' type = 'number'>
+    武器白值：<input id = 'watk' type = 'number'><br>
+    综合白值：<input id = 'tt' type = 'number'>
+    百分比攻：<input id = 'atkpct' type = 'number'><br>
+    直接加成：<input id = 'atkdrt' type = 'number'>
+    伤害加成：<input id = 'addit' type = 'number'><br>
+    暴击几率：<input id = 'crt' type = 'number'>
+    暴击伤害：<input id = 'crtd' type = 'number'><br>
+    韧性击破：<input id = 'toug' type = 'number'>
+    易伤加成：<input id = 'ease' type = 'number'><br>
+    属性抗性：<input id = 'eledef' type = 'number'>
+    属性穿透：<input id = 'elepen' type = 'number'><br>
+    我方等级：<input id = 'mlvl' type = 'number'>
+    对方等级：<input id = 'olvl' type = 'number'><br>
+    防御降低：<input id = 'ddef' type = 'number'>
+    技能倍率：<input id = 'beil' type = 'number'></div>
+    <dir class = 'fst'><button onclick='myfunction()'>看看结果</button>
+    <p id = 'totatk'></p></dir>
+</body>
+</html>
